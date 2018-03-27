@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d824e07cc15f4ef89ca998ddb81f333a" Name="Diagram1">
+        <EntityTypeShape EntityType="NolaDBModel.Car" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="NolaDBModel.Expense" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NolaDBModel.Purchase" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NolaDBModel.Sale" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="NolaDBModel.FK_Expense_Car" ManuallyRouted="false" />
+        <AssociationConnector Association="NolaDBModel.FK_Purchase_Car2" ManuallyRouted="false" />
+        <AssociationConnector Association="NolaDBModel.FK_Sale_Car" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NolaDBModel.viewPurchaseCar" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NolaDBModel.viewSaleCar" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="NolaDBModel.viewCheckPurchase" Width="1.5" PointX="5.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

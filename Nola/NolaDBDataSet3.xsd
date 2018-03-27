@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NolaDBDataSet3" targetNamespace="http://tempuri.org/NolaDBDataSet3.xsd" xmlns:mstns="http://tempuri.org/NolaDBDataSet3.xsd" xmlns="http://tempuri.org/NolaDBDataSet3.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="NolaDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="NolaDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Nola.Properties.Settings.GlobalReference.Default.NolaDBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewCheckPurchaseTableAdapter" GeneratorDataComponentClassName="viewCheckPurchaseTableAdapter" Name="viewCheckPurchase" UserDataComponentName="viewCheckPurchaseTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NolaDBConnectionString (Settings)" DbObjectName="NolaDB.dbo.viewCheckPurchase" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT idCar, model FROM dbo.viewCheckPurchase</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idCar" DataSetColumn="idCar" />
+              <Mapping SourceColumn="model" DataSetColumn="model" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="NolaDBConnectionString (Settings)" DbObjectName="NolaDB.dbo.viewCheckPurchase" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT idCar, model FROM dbo.viewCheckPurchase</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="NolaDBDataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="NolaDBDataSet3" msprop:Generator_UserDSName="NolaDBDataSet3">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="viewCheckPurchase" msprop:Generator_TableClassName="viewCheckPurchaseDataTable" msprop:Generator_TableVarName="tableviewCheckPurchase" msprop:Generator_RowChangedName="viewCheckPurchaseRowChanged" msprop:Generator_TablePropName="viewCheckPurchase" msprop:Generator_RowDeletingName="viewCheckPurchaseRowDeleting" msprop:Generator_RowChangingName="viewCheckPurchaseRowChanging" msprop:Generator_RowEvHandlerName="viewCheckPurchaseRowChangeEventHandler" msprop:Generator_RowDeletedName="viewCheckPurchaseRowDeleted" msprop:Generator_RowClassName="viewCheckPurchaseRow" msprop:Generator_UserTableName="viewCheckPurchase" msprop:Generator_RowEvArgName="viewCheckPurchaseRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idCar" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCar" msprop:Generator_ColumnPropNameInRow="idCar" msprop:Generator_ColumnPropNameInTable="idCarColumn" msprop:Generator_UserColumnName="idCar" type="xs:int" />
+              <xs:element name="model" msprop:Generator_ColumnVarNameInTable="columnmodel" msprop:Generator_ColumnPropNameInRow="model" msprop:Generator_ColumnPropNameInTable="modelColumn" msprop:Generator_UserColumnName="model" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:viewCheckPurchase" />
+      <xs:field xpath="mstns:idCar" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

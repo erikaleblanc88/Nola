@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NolaDBDataSet2" targetNamespace="http://tempuri.org/NolaDBDataSet2.xsd" xmlns:mstns="http://tempuri.org/NolaDBDataSet2.xsd" xmlns="http://tempuri.org/NolaDBDataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="NolaDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="NolaDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Nola.Properties.Settings.GlobalReference.Default.NolaDBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewAccountBalanceTableAdapter" GeneratorDataComponentClassName="viewAccountBalanceTableAdapter" Name="viewAccountBalance" UserDataComponentName="viewAccountBalanceTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NolaDBConnectionString (Settings)" DbObjectName="NolaDB.dbo.viewAccountBalance" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Purchase_Date, model, color, vin, Purchase_Price, Buyer_Fee, Expenses, date, price, Profit, AccountBalance FROM dbo.viewAccountBalance</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Purchase_Date" DataSetColumn="Purchase_Date" />
+              <Mapping SourceColumn="model" DataSetColumn="model" />
+              <Mapping SourceColumn="color" DataSetColumn="color" />
+              <Mapping SourceColumn="vin" DataSetColumn="vin" />
+              <Mapping SourceColumn="Purchase_Price" DataSetColumn="Purchase_Price" />
+              <Mapping SourceColumn="Buyer_Fee" DataSetColumn="Buyer_Fee" />
+              <Mapping SourceColumn="Expenses" DataSetColumn="Expenses" />
+              <Mapping SourceColumn="date" DataSetColumn="date" />
+              <Mapping SourceColumn="price" DataSetColumn="price" />
+              <Mapping SourceColumn="Profit" DataSetColumn="Profit" />
+              <Mapping SourceColumn="AccountBalance" DataSetColumn="AccountBalance" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="NolaDBDataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="NolaDBDataSet2" msprop:Generator_UserDSName="NolaDBDataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="viewAccountBalance" msprop:Generator_TableClassName="viewAccountBalanceDataTable" msprop:Generator_TableVarName="tableviewAccountBalance" msprop:Generator_TablePropName="viewAccountBalance" msprop:Generator_RowDeletingName="viewAccountBalanceRowDeleting" msprop:Generator_RowChangingName="viewAccountBalanceRowChanging" msprop:Generator_RowEvHandlerName="viewAccountBalanceRowChangeEventHandler" msprop:Generator_RowDeletedName="viewAccountBalanceRowDeleted" msprop:Generator_UserTableName="viewAccountBalance" msprop:Generator_RowChangedName="viewAccountBalanceRowChanged" msprop:Generator_RowEvArgName="viewAccountBalanceRowChangeEvent" msprop:Generator_RowClassName="viewAccountBalanceRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Purchase_Date" msprop:Generator_ColumnVarNameInTable="columnPurchase_Date" msprop:Generator_ColumnPropNameInRow="Purchase_Date" msprop:Generator_ColumnPropNameInTable="Purchase_DateColumn" msprop:Generator_UserColumnName="Purchase_Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="model" msprop:Generator_ColumnVarNameInTable="columnmodel" msprop:Generator_ColumnPropNameInRow="model" msprop:Generator_ColumnPropNameInTable="modelColumn" msprop:Generator_UserColumnName="model" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="color" msprop:Generator_ColumnVarNameInTable="columncolor" msprop:Generator_ColumnPropNameInRow="color" msprop:Generator_ColumnPropNameInTable="colorColumn" msprop:Generator_UserColumnName="color" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="vin" msprop:Generator_ColumnVarNameInTable="columnvin" msprop:Generator_ColumnPropNameInRow="vin" msprop:Generator_ColumnPropNameInTable="vinColumn" msprop:Generator_UserColumnName="vin" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Purchase_Price" msprop:Generator_ColumnVarNameInTable="columnPurchase_Price" msprop:Generator_ColumnPropNameInRow="Purchase_Price" msprop:Generator_ColumnPropNameInTable="Purchase_PriceColumn" msprop:Generator_UserColumnName="Purchase_Price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Buyer_Fee" msprop:Generator_ColumnVarNameInTable="columnBuyer_Fee" msprop:Generator_ColumnPropNameInRow="Buyer_Fee" msprop:Generator_ColumnPropNameInTable="Buyer_FeeColumn" msprop:Generator_UserColumnName="Buyer_Fee" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Expenses" msprop:Generator_ColumnVarNameInTable="columnExpenses" msprop:Generator_ColumnPropNameInRow="Expenses" msprop:Generator_ColumnPropNameInTable="ExpensesColumn" msprop:Generator_UserColumnName="Expenses" type="xs:decimal" minOccurs="0" />
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Profit" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnProfit" msprop:Generator_ColumnPropNameInRow="Profit" msprop:Generator_ColumnPropNameInTable="ProfitColumn" msprop:Generator_UserColumnName="Profit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AccountBalance" msprop:Generator_ColumnVarNameInTable="columnAccountBalance" msprop:Generator_ColumnPropNameInRow="AccountBalance" msprop:Generator_ColumnPropNameInTable="AccountBalanceColumn" msprop:Generator_UserColumnName="AccountBalance" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

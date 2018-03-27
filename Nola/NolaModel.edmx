@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NolaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="IdCar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" />
+          <Property Name="vin" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="IdExpense" />
+          </Key>
+          <Property Name="IdExpense" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="price" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="idCar" Type="int" />
+          <Property Name="date" Type="date" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="IdPurchase" />
+          </Key>
+          <Property Name="IdPurchase" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="fee" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="idCar" Type="int" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="IdSale" />
+          </Key>
+          <Property Name="IdSale" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="idCar" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NolaDB.dbo.viewAccountBalance' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewAccountBalance">
+          <Property Name="Purchase_Date" Type="datetime" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" />
+          <Property Name="vin" Type="nvarchar" MaxLength="100" />
+          <Property Name="Purchase_Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Buyer_Fee" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Expenses" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Profit" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="AccountBalance" Type="decimal" Precision="38" Scale="2" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NolaDB.dbo.viewCheckPurchase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewCheckPurchase">
+          <Key>
+            <PropertyRef Name="idCar" />
+          </Key>
+          <Property Name="idCar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NolaDB.dbo.viewExpenseCar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewExpenseCar">
+          <Key>
+            <PropertyRef Name="idExpense" />
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="idExpense" Type="int" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="price" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="date" Type="date" />
+          <Property Name="IdCar" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NolaDB.dbo.viewPurchaseCar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewPurchaseCar">
+          <Key>
+            <PropertyRef Name="idPurchase" />
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="idPurchase" Type="int" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="fee" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="IdCar" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NolaDB.dbo.viewSaleCar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewSaleCar">
+          <Key>
+            <PropertyRef Name="idSale" />
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="idSale" Type="int" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="IdCar" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Expense_Car">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Expense" Type="Self.Expense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="IdCar" />
+            </Principal>
+            <Dependent Role="Expense">
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Car2">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="IdCar" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Car">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="IdCar" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NolaDBModelStoreContainer">
+          <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="viewCheckPurchase" EntityType="Self.viewCheckPurchase" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewCheckPurchase].[idCar] AS [idCar], 
+    [viewCheckPurchase].[model] AS [model]
+    FROM [dbo].[viewCheckPurchase] AS [viewCheckPurchase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewExpenseCar" EntityType="Self.viewExpenseCar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewExpenseCar].[idExpense] AS [idExpense], 
+    [viewExpenseCar].[model] AS [model], 
+    [viewExpenseCar].[description] AS [description], 
+    [viewExpenseCar].[price] AS [price], 
+    [viewExpenseCar].[date] AS [date], 
+    [viewExpenseCar].[IdCar] AS [IdCar]
+    FROM [dbo].[viewExpenseCar] AS [viewExpenseCar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewPurchaseCar" EntityType="Self.viewPurchaseCar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewPurchaseCar].[idPurchase] AS [idPurchase], 
+    [viewPurchaseCar].[model] AS [model], 
+    [viewPurchaseCar].[price] AS [price], 
+    [viewPurchaseCar].[fee] AS [fee], 
+    [viewPurchaseCar].[date] AS [date], 
+    [viewPurchaseCar].[IdCar] AS [IdCar]
+    FROM [dbo].[viewPurchaseCar] AS [viewPurchaseCar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewSaleCar" EntityType="Self.viewSaleCar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viewSaleCar].[idSale] AS [idSale], 
+    [viewSaleCar].[model] AS [model], 
+    [viewSaleCar].[price] AS [price], 
+    [viewSaleCar].[date] AS [date], 
+    [viewSaleCar].[IdCar] AS [IdCar]
+    FROM [dbo].[viewSaleCar] AS [viewSaleCar]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Expense_Car" Association="Self.FK_Expense_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Expense" EntitySet="Expense" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Car2" Association="Self.FK_Purchase_Car2">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Car" Association="Self.FK_Sale_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NolaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="IdCar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Expense" Relationship="Self.FK_Expense_Car" FromRole="Car" ToRole="Expense" />
+          <NavigationProperty Name="Purchase" Relationship="Self.FK_Purchase_Car2" FromRole="Car" ToRole="Purchase" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK_Sale_Car" FromRole="Car" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="IdExpense" />
+          </Key>
+          <Property Name="IdExpense" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="idCar" Type="Int32" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_Expense_Car" FromRole="Expense" ToRole="Car" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="IdPurchase" />
+          </Key>
+          <Property Name="IdPurchase" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="fee" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="idCar" Type="Int32" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_Purchase_Car2" FromRole="Purchase" ToRole="Car" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="IdSale" />
+          </Key>
+          <Property Name="IdSale" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="idCar" Type="Int32" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_Sale_Car" FromRole="Sale" ToRole="Car" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Expense_Car">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Expense" Type="Self.Expense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="IdCar" />
+            </Principal>
+            <Dependent Role="Expense">
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Car2">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="IdCar" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Car">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="IdCar" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NolaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Car" EntityType="Self.Car" />
+          <EntitySet Name="Expense" EntityType="Self.Expense" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" />
+          <AssociationSet Name="FK_Expense_Car" Association="Self.FK_Expense_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Expense" EntitySet="Expense" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Car2" Association="Self.FK_Purchase_Car2">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Car" Association="Self.FK_Sale_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <EntitySet Name="viewExpenseCar" EntityType="NolaDBModel.viewExpenseCar" />
+          <EntitySet Name="viewPurchaseCar" EntityType="NolaDBModel.viewPurchaseCar" />
+          <EntitySet Name="viewSaleCar" EntityType="NolaDBModel.viewSaleCar" />
+          <EntitySet Name="viewCheckPurchase" EntityType="NolaDBModel.viewCheckPurchase" />
+        </EntityContainer>
+        <EntityType Name="viewExpenseCar">
+          <Key>
+            <PropertyRef Name="idExpense" />
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="idExpense" Type="Int32" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="IdCar" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="viewPurchaseCar">
+          <Key>
+            <PropertyRef Name="idPurchase" />
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="idPurchase" Type="Int32" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="fee" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="IdCar" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="viewSaleCar">
+          <Key>
+            <PropertyRef Name="idSale" />
+            <PropertyRef Name="IdCar" />
+          </Key>
+          <Property Name="idSale" Type="Int32" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="IdCar" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="viewCheckPurchase">
+          <Key>
+            <PropertyRef Name="idCar" />
+          </Key>
+          <Property Name="idCar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NolaDBModelStoreContainer" CdmEntityContainer="NolaDBEntities">
+          <EntitySetMapping Name="Car">
+            <EntityTypeMapping TypeName="NolaDBModel.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="vin" ColumnName="vin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expense">
+            <EntityTypeMapping TypeName="NolaDBModel.Expense">
+              <MappingFragment StoreEntitySet="Expense">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="IdExpense" ColumnName="IdExpense" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="idCar" ColumnName="idCar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchase">
+            <EntityTypeMapping TypeName="NolaDBModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="IdPurchase" ColumnName="IdPurchase" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fee" ColumnName="fee" />
+                <ScalarProperty Name="idCar" ColumnName="idCar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sale">
+            <EntityTypeMapping TypeName="NolaDBModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="IdSale" ColumnName="IdSale" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="idCar" ColumnName="idCar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewExpenseCar">
+            <EntityTypeMapping TypeName="NolaDBModel.viewExpenseCar">
+              <MappingFragment StoreEntitySet="viewExpenseCar">
+                <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="idExpense" ColumnName="idExpense" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewPurchaseCar">
+            <EntityTypeMapping TypeName="NolaDBModel.viewPurchaseCar">
+              <MappingFragment StoreEntitySet="viewPurchaseCar">
+                <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="fee" ColumnName="fee" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="idPurchase" ColumnName="idPurchase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewSaleCar">
+            <EntityTypeMapping TypeName="NolaDBModel.viewSaleCar">
+              <MappingFragment StoreEntitySet="viewSaleCar">
+                <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="idSale" ColumnName="idSale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewCheckPurchase">
+            <EntityTypeMapping TypeName="NolaDBModel.viewCheckPurchase">
+              <MappingFragment StoreEntitySet="viewCheckPurchase">
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="idCar" ColumnName="idCar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NolaDBDataSet" targetNamespace="http://tempuri.org/NolaDBDataSet.xsd" xmlns:mstns="http://tempuri.org/NolaDBDataSet.xsd" xmlns="http://tempuri.org/NolaDBDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="NolaDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="NolaDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Nola.Properties.Settings.GlobalReference.Default.NolaDBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewExpenseCarTableAdapter" GeneratorDataComponentClassName="viewExpenseCarTableAdapter" Name="viewExpenseCar" UserDataComponentName="viewExpenseCarTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NolaDBConnectionString (Settings)" DbObjectName="NolaDB.dbo.viewExpenseCar" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT idExpense, model, description, price, date FROM dbo.viewExpenseCar</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idExpense" DataSetColumn="idExpense" />
+              <Mapping SourceColumn="model" DataSetColumn="model" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+              <Mapping SourceColumn="price" DataSetColumn="price" />
+              <Mapping SourceColumn="date" DataSetColumn="date" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="NolaDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="NolaDBDataSet" msprop:Generator_UserDSName="NolaDBDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="viewExpenseCar" msprop:Generator_TableClassName="viewExpenseCarDataTable" msprop:Generator_TableVarName="tableviewExpenseCar" msprop:Generator_TablePropName="viewExpenseCar" msprop:Generator_RowDeletingName="viewExpenseCarRowDeleting" msprop:Generator_RowChangingName="viewExpenseCarRowChanging" msprop:Generator_RowEvHandlerName="viewExpenseCarRowChangeEventHandler" msprop:Generator_RowDeletedName="viewExpenseCarRowDeleted" msprop:Generator_UserTableName="viewExpenseCar" msprop:Generator_RowChangedName="viewExpenseCarRowChanged" msprop:Generator_RowEvArgName="viewExpenseCarRowChangeEvent" msprop:Generator_RowClassName="viewExpenseCarRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idExpense" msprop:Generator_ColumnVarNameInTable="columnidExpense" msprop:Generator_ColumnPropNameInRow="idExpense" msprop:Generator_ColumnPropNameInTable="idExpenseColumn" msprop:Generator_UserColumnName="idExpense" type="xs:int" />
+              <xs:element name="model" msprop:Generator_ColumnVarNameInTable="columnmodel" msprop:Generator_ColumnPropNameInRow="model" msprop:Generator_ColumnPropNameInTable="modelColumn" msprop:Generator_UserColumnName="model" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:viewExpenseCar" />
+      <xs:field xpath="mstns:idExpense" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
