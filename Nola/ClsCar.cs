@@ -8,6 +8,7 @@ namespace Nola
 {
     public class ClsCar
     {
+
         NolaDBEntities entity;
 
         public ClsCar()
